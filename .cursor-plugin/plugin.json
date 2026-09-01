@@ -1,0 +1,14 @@
+{
+  "name": "soundcheck",
+  "displayName": "Soundcheck",
+  "version": "0.1.0",
+  "description": "Connect Cursor to Soundcheck to staff and run live events (gigs, crew, setlists, call lists, ingest). OAuth, no API keys.",
+  "author": {
+    "name": "Soundcheck Live, Inc.",
+    "email": "info@soundchecklive.io"
+  },
+  "homepage": "https://soundchecklive.io",
+  "keywords": ["soundcheck", "live-events", "staffing", "mcp", "gigs"],
+  "logo": "assets/logo.svg",
+  "license": "MIT"
+}
