@@ -9,6 +9,13 @@
     "url": "https://github.com/soundchecklive/soundcheck-plugin",
     "source": "github"
   },
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/soundchecklive/soundcheck-plugin/main/assets/logo.png",
+      "mimeType": "image/png",
+      "sizes": ["512x512"]
+    }
+  ],
   "remotes": [
     {
       "type": "streamable-http",
