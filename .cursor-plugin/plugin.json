@@ -9,6 +9,6 @@
   },
   "homepage": "https://soundchecklive.io",
   "keywords": ["soundcheck", "live-events", "staffing", "mcp", "gigs"],
-  "logo": "assets/logo.svg",
+  "logo": "assets/logo.png",
   "license": "MIT"
 }

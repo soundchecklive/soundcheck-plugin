@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Soundcheck" width="128" height="128" />
+</p>
+
 # Soundcheck for Cursor
 
 Cursor plugin that connects Agent to **Soundcheck** — live-event staffing for gigs, crew, setlists, call lists, and document ingest. Package skills plus a URL-only MCP member server. Sign in with OAuth. No API keys.
