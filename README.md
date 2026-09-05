@@ -4,7 +4,11 @@
 
 # Soundcheck for Cursor
 
+[![smithery badge](https://smithery.ai/badge/steven-pd2q/soundcheck)](https://smithery.ai/servers/steven-pd2q/soundcheck)
+
 Cursor plugin that connects Agent to **Soundcheck** — live-event staffing for gigs, crew, setlists, call lists, and document ingest. Package skills plus a URL-only MCP member server. Sign in with OAuth. No API keys.
+
+Smithery: https://smithery.ai/servers/steven-pd2q/soundcheck
 
 ## Install
 
