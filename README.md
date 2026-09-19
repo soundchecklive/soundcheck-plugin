@@ -79,3 +79,14 @@ Agent runs `clone-workspace`: `export_workspace` on the source → `preview_uef_
 ## License
 
 MIT © Soundcheck Live, Inc.
+
+
+## Skills
+
+- `clone-workspace` — clone catalogs between orgs you own
+- `ingest-a-gig` — paperwork → gated commit
+- `staff-a-live-event` — event, venue, call list, setlist, checklist
+- `message-crew-gated` — Confirm Card on crew message / reminder
+- `settle-a-gig` — gated settle / complete / reopen
+- `run-agent-loop` — ingest → staff → confirm (demo path)
+- `buy-platform-plan` — platform SaaS purchase / pricing handoff
