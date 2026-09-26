@@ -33,7 +33,7 @@ Documented member connect URL (used in `mcp.json`):
 
 Unauthenticated discovery (not packaged in this plugin; paste only when you want the public tools):
 
-`https://api.soundchecklive.io/public/mcp`
+`https://mcp.soundchecklive.io/public/mcp`
 
 See [MCP server docs](https://docs.soundchecklive.io/integrations/mcp-server) and [MCP discovery](https://docs.soundchecklive.io/integrations/mcp-discovery).
 
@@ -90,3 +90,15 @@ MIT © Soundcheck Live, Inc.
 - `settle-a-gig` — gated settle / complete / reopen
 - `run-agent-loop` — ingest → staff → confirm (demo path)
 - `buy-platform-plan` — platform SaaS purchase / pricing handoff
+
+
+## Claude plugins (directory)
+
+This repository also packages plugins for Anthropic’s Claude Plugins directory:
+
+| Plugin path | Product | MCP | Auth |
+| --- | --- | --- | --- |
+| repo root (`.claude-plugin/`) | **Soundcheck** member staffing / ops | `https://mcp.soundchecklive.io/mcp` | OAuth |
+| `instant-quotes/` | **Soundcheck Instant Quotes** | `https://mcp.soundchecklive.io/public/mcp` | None |
+
+Instant Quotes estimates are **SYNTHETIC / illustrative**, not binding. Member Soundcheck is signed-in org ops — a different product.
