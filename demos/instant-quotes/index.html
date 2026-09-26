@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soundcheck Instant Quotes — OpenAI Platform demo</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      background: #090b10; color: #ecf0f8; }
+    header { padding: 28px 32px 8px; max-width: 1100px; margin: 0 auto; }
+    h1 { font-size: 1.6rem; margin: 0 0 8px; }
+    .sub { color: #a8b0c4; margin: 0 0 12px; line-height: 1.45; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px; }
+    .pill { background: #161a24; border: 1px solid #2a3042; color: #3ee0b5;
+      border-radius: 999px; padding: 4px 12px; font-size: 12px; }
+    main { max-width: 1100px; margin: 0 auto; padding: 0 32px 48px; }
+    video { width: 100%; border-radius: 14px; border: 1px solid #2a3042; background: #000; }
+    a { color: #3ee0b5; }
+    .meta { margin-top: 18px; color: #6e7690; font-size: 14px; line-height: 1.55; }
+    code { color: #f5c14a; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Soundcheck Instant Quotes</h1>
+    <p class="sub">OpenAI Platform plugin demo (~78s). Live public MCP · No Auth · <code>quote_event</code>.</p>
+    <div class="pills">
+      <span class="pill">PUBLIC MCP</span>
+      <span class="pill">No Auth</span>
+      <span class="pill">catalog 2026-09-22</span>
+      <span class="pill">SYNTHETIC rates</span>
+    </div>
+  </header>
+  <main>
+    <video controls playsinline preload="metadata"
+      src="https://github.com/soundchecklive/soundcheck-plugin/releases/download/instant-quotes-openai-demo-2026-09-26/soundcheck-instant-quotes-openai-demo.mp4">
+      Your browser does not support video. Download the MP4 from the release asset.
+    </video>
+    <p class="meta">
+      MCP: <a href="https://mcp.soundchecklive.io/public/mcp">https://mcp.soundchecklive.io/public/mcp</a><br/>
+      Direct MP4: <a href="https://github.com/soundchecklive/soundcheck-plugin/releases/download/instant-quotes-openai-demo-2026-09-26/soundcheck-instant-quotes-openai-demo.mp4">release download</a><br/>
+      Smithery: <a href="https://smithery.ai/servers/steven-pd2q/live-event-quotes">steven-pd2q/live-event-quotes</a><br/>
+      Scenario: 150-guest Austin wedding · mid $4,805 → refined $10,913 with LED wall + livestream.<br/>
+      This page does not submit the OpenAI plugin or attest to policy.
+    </p>
+  </main>
+</body>
+</html>
