@@ -1,7 +1,8 @@
 {
-  "name": "soundcheck",
-  "version": "0.1.2",
+  "name": "soundcheck-live",
+  "version": "0.1.3",
   "icon": "./assets/logo.png",
+  "privacyPolicyUrl": "https://soundchecklive.io/privacy",
   "description": "Soundcheck member MCP for live-event staffing and ops — gigs, crew, setlists, call lists, ingest, and gated settle. Sign in with OAuth. Not Instant Quotes (anonymous pricing lives in the instant-quotes plugin).",
   "author": {
     "name": "Soundcheck Live, Inc.",
