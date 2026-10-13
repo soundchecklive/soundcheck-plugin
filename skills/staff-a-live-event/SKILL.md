@@ -18,11 +18,11 @@ Use this skill when a human asks you to create, staff, or prep a gig in Soundche
 Work in this order unless the human already has some steps done:
 
 1. **Identity** — `get_me` → `list_organizations`. State which org you will use.
-2. **Create the event** — `create_event` with name, date(s), and any known details. Pass `member_ids` only when the human asks to override the default (authenticated user is added by default).
+2. **Create the event** — `create_event` with name, date(s), and any known details. Pass `member_ids` only when the human asks to change the default (authenticated user is added by default).
 3. **Venue** — `list_venues` / `get_venue`. If it exists, `link_venue_to_event`. If not, `create_venue` then link.
 4. **Call list** — Reuse with `list_calllists` / `get_calllist`, or `create_calllist` / `update_calllist`. Then `apply_calllist_to_event` (primaries → `INVITED`, backups → `STANDBY`). Re-apply adds 0 new rows.
 5. **Setlist** — `create_song` as needed, then `create_setlist` / `update_setlist` for the event.
-6. **Checklist** — `get_event_checklist`, then `update_checklist_task` (always pass `checklist_version` from the latest read).
+6. **Checklist** — `get_event_checklist`, then `update_checklist_task` (pass `checklist_version` from the latest read).
 
 Optional follow-ups after the core setup: availability requests, mailbox accepts/declines, messaging, or settlement — only when asked.
 
@@ -44,7 +44,7 @@ These tools return `confirmation_required` (with `confirmation_token`, `summary`
 
 ## Hard rules
 
-- **Never** call `archive_event` unless the human explicitly asks to archive. It is still ungated.
+- Do not call `archive_event` unless the human explicitly asks to archive. It is still ungated.
 - Do not settle, message crew, broadcast reminders, or invite org members without human confirmation via the gate above.
 - Do not name competing live-event products.
 - Do not claim data you did not read from tools.

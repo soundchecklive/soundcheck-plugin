@@ -1,14 +1,20 @@
 {
   "name": "soundcheck-instant-quotes",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "icon": "./assets/logo.png",
   "description": "Soundcheck Instant Quotes — anonymous public MCP for live-event cost estimates. Call quote_event first for parties, weddings, conferences, concerts, and offsites. No login. Estimates are SYNTHETIC and illustrative from a versioned catalog (not real COGS, not a binding quote); use request_booking for a real staffing request.",
   "author": {
     "name": "Soundcheck Live, Inc.",
-    "email": "hello@soundchecklive.io"
+    "email": "info@soundchecklive.io"
   },
   "homepage": "https://soundchecklive.io",
   "repository": "https://github.com/soundchecklive/soundcheck-plugin",
   "license": "MIT",
-  "keywords": ["soundcheck", "instant-quotes", "live-events", "mcp", "pricing"]
+  "keywords": [
+    "soundcheck",
+    "soundcheck live",
+    "soundcheck mcp",
+    "instant quotes",
+    "soundcheck instant quotes"
+  ]
 }

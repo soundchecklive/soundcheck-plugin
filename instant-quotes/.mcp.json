@@ -1,6 +1,8 @@
 {
-  "soundcheck-instant-quotes": {
-    "type": "http",
-    "url": "https://mcp.soundchecklive.io/public/mcp"
+  "mcpServers": {
+    "soundcheck-instant-quotes": {
+      "type": "http",
+      "url": "https://mcp.soundchecklive.io/public/mcp"
+    }
   }
 }

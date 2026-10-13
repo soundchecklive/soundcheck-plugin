@@ -1,11 +1,11 @@
 ---
 name: settle-a-gig
-description: When to use — preview and settle (or reopen/complete) a Soundcheck event’s money/closeout via gated MCP tools; never settle without human confirmation.
+description: When to use — preview and settle (or reopen/complete) a Soundcheck event’s money/closeout via gated MCP tools; settle only after human confirmation.
 ---
 
 # Settle a gig
 
-Use when a human asks to close out, settle, complete, or reopen a Soundcheck gig’s finances. Member OAuth required. Money risk — treat every write as Confirm Card–gated.
+Use when a human asks to close out, settle, complete, or reopen a Soundcheck gig’s finances. Member OAuth required. Money risk — treat each write as Confirm Card–gated.
 
 ## Prerequisites
 
@@ -29,10 +29,10 @@ Protocol: call once without token → show `summary` → resend with `confirmati
 4. **Confirm** — Only on approve, resend with token.
 5. **Verify** — Re-read event/settle status and report the new state.
 
-## Hard rules
+## Guardrails
 
-- Never settle, complete, or reopen without the human confirming the gate summary.
-- Never invent ledger lines, tip-outs, or tax amounts.
+- Settle, complete, or reopen only after the human confirms the gate summary.
+- Do not invent ledger lines, tip-outs, or tax amounts.
 - Prefer settle preview language when the human only asked “what would settlement look like.”
 - Do not message crew or archive as a side effect unless separately asked (and gated).
 

@@ -1,0 +1,21 @@
+{
+  "name": "soundcheck-instant-quotes",
+  "displayName": "Soundcheck Instant Quotes",
+  "version": "0.2.0",
+  "description": "Soundcheck Instant Quotes for Cursor and Grok Bot — anonymous public MCP for live-event cost estimates. No login. Estimates are SYNTHETIC and illustrative, not a binding quote.",
+  "author": {
+    "name": "Soundcheck Live, Inc.",
+    "email": "info@soundchecklive.io"
+  },
+  "homepage": "https://soundchecklive.io",
+  "repository": "https://github.com/soundchecklive/soundcheck-plugin",
+  "keywords": [
+    "soundcheck",
+    "soundcheck live",
+    "soundcheck mcp",
+    "instant quotes",
+    "soundcheck instant quotes"
+  ],
+  "logo": "assets/logo.png",
+  "license": "MIT"
+}

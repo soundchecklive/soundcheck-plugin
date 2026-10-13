@@ -26,8 +26,8 @@ Use this skill when a human wants to clone a sandbox, last tour's org, or golden
 
 ## Hard rules
 
-- Destination must be an org the user owns / is allowed to import into — never assume.
-- Always preview with `committed: false` (or equivalent dry-run) before `import_uef`.
+- Import only into an org the user owns or is allowed to import into; confirm this rather than assuming it.
+- Run a preview with `committed: false` (or equivalent dry-run) before `import_uef`.
 - Money, files, branding, and secrets stay out of the clone; say so up front.
 - Do not use public `request_booking` / `request_sponsorship` for workspace clone.
 - Do not name competing live-event products.

@@ -1,0 +1,23 @@
+{
+  "name": "soundcheck",
+  "owner": {
+    "name": "Soundcheck Live, Inc.",
+    "email": "info@soundchecklive.io"
+  },
+  "metadata": {
+    "description": "Soundcheck live-event plugins: member ops MCP and public Instant Quotes.",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "soundcheck",
+      "source": ".",
+      "description": "Soundcheck member MCP for live-event staffing and ops (OAuth)."
+    },
+    {
+      "name": "soundcheck-instant-quotes",
+      "source": "instant-quotes",
+      "description": "Soundcheck Instant Quotes — anonymous live-event cost estimates (no login)."
+    }
+  ]
+}
