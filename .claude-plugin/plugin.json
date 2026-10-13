@@ -1,14 +1,18 @@
 {
   "name": "soundcheck",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "icon": "./assets/logo.png",
-  "description": "Soundcheck member MCP for live-event staffing and ops — gigs, crew, setlists, call lists, ingest, and gated settle. Sign in with OAuth. Not Instant Quotes (anonymous pricing lives in the instant-quotes plugin).",
+  "description": "Soundcheck member MCP (OAuth sign-in, no API keys) for live-event staffing and ops — gigs, crew, setlists, call lists, ingest, and gated settle. Secondary no-login public MCP included as a fallback for reviewers and discovery. Anonymous pricing lives in the instant-quotes plugin.",
   "author": {
     "name": "Soundcheck Live, Inc.",
-    "email": "hello@soundchecklive.io"
+    "email": "info@soundchecklive.io"
   },
   "homepage": "https://soundchecklive.io",
   "repository": "https://github.com/soundchecklive/soundcheck-plugin",
   "license": "MIT",
-  "keywords": ["soundcheck", "live-events", "staffing", "mcp", "gigs"]
+  "keywords": [
+    "soundcheck",
+    "soundcheck live",
+    "soundcheck mcp"
+  ]
 }

@@ -5,7 +5,7 @@ description: When to use — run Soundcheck’s flagship agent loop end-to-end: 
 
 # Run the agent loop (ingest → staff → confirm)
 
-Flagship path for third-party agents (Muse, ChatGPT, Claude, Cursor). Member OAuth. Goal: one airtight loop humans can trust.
+Flagship path for third-party agents (Muse, ChatGPT, Claude, Cursor). Runs on the Soundcheck member MCP (`soundcheck`, OAuth) — the primary server. Goal: one airtight loop humans can trust.
 
 ## Loop
 

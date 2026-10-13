@@ -1,7 +1,12 @@
 {
   "mcpServers": {
     "soundcheck": {
+      "type": "http",
       "url": "https://mcp.soundchecklive.io/mcp"
+    },
+    "soundcheck-public": {
+      "type": "http",
+      "url": "https://mcp.soundchecklive.io/public/mcp"
     }
   }
 }
