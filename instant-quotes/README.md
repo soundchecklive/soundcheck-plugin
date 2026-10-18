@@ -22,9 +22,9 @@ Numbers come from Soundcheck’s versioned pricing catalog and a deterministic e
 
 For a real staffing / booking request to an organization, use **`request_booking`**.
 
-## Other tools (15 total)
+## Other tools (16 total, including `quote_event`)
 
-`list_quote_packages`, `get_public_org`, `list_positions`, `normalize_positions`, `analyze_event_to_uef`, `get_uef_schema`, `validate_uef`, `search_places`, `get_place`, `search_inventory`, `normalize_inventory`, `lookup_market_pricing`, `request_booking`, `request_sponsorship`.
+`list_quote_packages`, `get_public_org`, `list_positions`, `normalize_positions`, `read_event_details`, `get_import_format`, `check_import_file`, `search_places`, `get_place`, `search_inventory`, `normalize_inventory`, `lookup_market_pricing`, `request_booking`, `request_sponsorship`, `send_feedback`.
 
 ## Not this plugin
 

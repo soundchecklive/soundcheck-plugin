@@ -1,7 +1,7 @@
 {
   "name": "soundcheck",
   "displayName": "Soundcheck",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Soundcheck member MCP for Cursor and Grok Bot: sign in with OAuth (no API keys) to staff and run live events — gigs, crew, setlists, call lists, ingest, gated settle. Includes a secondary no-login public MCP as a fallback for reviewers and discovery.",
   "author": {
     "name": "Soundcheck Live, Inc.",
