@@ -61,7 +61,7 @@ See [MCP server docs](https://docs.soundchecklive.io/integrations/mcp-server) an
 | MCP `soundcheck` | Member tools for events, crew, setlists, ingest, messaging, imports |
 | Skill `staff-a-live-event` | Create and staff a gig end-to-end |
 | Skill `ingest-a-gig` | Batch → add docs → review → gated commit |
-| Skill `clone-workspace` | Export → preview UEF → gated import into an org you own |
+| Skill `clone-workspace` | Export → preview import → gated import into an org you own |
 
 Consequential writes (`invite_org_member`, `settle_event`, `send_message`, `broadcast_event_reminder`, ingestion/import commits, and related gated tools) return `confirmation_required`. The agent should show you the summary and only resend with the token after you confirm.
 
@@ -77,13 +77,13 @@ Agent runs `staff-a-live-event`: `get_me` / `list_organizations` → `create_eve
 
 > Ingest this advance PDF for Saturday's wedding and pull crew and load-in into the gig.
 
-Agent runs `ingest-a-gig`: `create_ingestion_batch` → upload/add text → review proposals → gated commit only after you approve. If analysis fails, it reports that instead of inventing fields.
+Agent runs `ingest-a-gig`: `create_ingestion_batch` → `add_ingestion_file` (text or file) → review proposals → gated commit only after you approve. If analysis fails, it reports that instead of inventing fields.
 
 **Clone last tour into a new org**
 
 > Clone last tour's workspace into our new production-company org.
 
-Agent runs `clone-workspace`: `export_workspace` on the source → `preview_uef_import` on the dest with commit off → `import_uef` only after you confirm. Destination must be an org you own.
+Agent runs `clone-workspace`: `export_workspace` on the source → `preview_import_file` on the dest (dry run) → `import_file` only after you confirm. Destination must be an org you own.
 
 ## Links
 

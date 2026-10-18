@@ -17,15 +17,16 @@ Use this skill when a human wants to pull details from advance docs, contracts, 
 
 1. **Open a batch** — `create_ingestion_batch` on the event.
 2. **Add content**
-   - Pasted text / email body → `add_ingestion_text`
-   - Binary file (PDF, image) → `upload_ingestion_file` (base64) or follow `request_attachment_upload` when the host app stages files
+   - Pasted text / email body → `add_ingestion_file` with `text` (optional `source_name` label)
+   - Binary file (PDF, image) → `add_ingestion_file` with `filename` + `content_base64` (optional `content_type`; max 8 MiB decoded), or follow `request_attachment_upload` when the host app stages files
+   - Each call needs `event_id` and `batch_id`. It returns right away and analysis runs asynchronously.
 3. **Wait and review**
-   - Poll with `get_ingestion_batch` / `list_ingestion_batches`
+   - Check `get_ingestion_batch` (default `view: "status"`) or `list_ingestion_batches` for per-file and merge status. Analysis is async, so check once rather than polling in a tight loop.
    - Per file: `get_ingestion_file_review` (proposals + dry-run new vs match)
-   - Optional merge: `trigger_ingestion_merge`, then `get_ingestion_batch_review`
+   - Optional merge: `trigger_ingestion_merge`, then `get_ingestion_batch` with `view: "review"` (returns the merged proposals and a `merge_version`)
 4. **Report honestly** — Show schedule, crew, ledger, leads, and event-detail proposals that analysis produced. If a file is attached-only, analysis failed, or proposals are empty, say so. **Do not invent** load-in times, fees, names, or venues.
 5. **Commit only after approval**
-   - `commit_ingestion_file` or `commit_ingestion_batch` are confirmation-gated
+   - `commit_ingestion_file` or `commit_ingestion_batch` are confirmation-gated; `commit_ingestion_batch` needs the `merge_version` from the batch review plus the `selected` proposal paths the human approved
    - Call once without a token → show `summary` → resend with `confirmation_token` only if the human confirms
 
 ## Failure and recovery
@@ -47,6 +48,6 @@ Human: "Ingest this advance PDF for Saturday's wedding and pull crew + load-in."
 
 1. Resolve Saturday's event
 2. `create_ingestion_batch`
-3. `upload_ingestion_file` with the PDF
-4. `get_ingestion_file_review` / `get_ingestion_batch_review` — present proposals or report analysis failure
+3. `add_ingestion_file` with the PDF (`filename` + `content_base64`)
+4. `get_ingestion_file_review` / `get_ingestion_batch` (`view: "review"`) — present proposals or report analysis failure
 5. On approval, `commit_ingestion_batch` (gate → confirm → token)

@@ -23,7 +23,7 @@ ingest gig → staff crew → gated confirm (message / invite) → optional sett
 ## Sequence (demo-safe)
 
 1. **Cold identity** — `get_me` → `list_organizations`. Name the org (id + name). Do not use another tenant.
-2. **Ingest** — Follow `ingest-a-gig`. If no file, accept pasted advance text via `add_ingestion_text`. Never invent extract fields.
+2. **Ingest** — Follow `ingest-a-gig`. If no file, accept pasted advance text via `add_ingestion_file` (`text`). Never invent extract fields.
 3. **Staff** — Follow `staff-a-live-event` for missing venue / call list / setlist pieces. Prefer reuse over create.
 4. **Confirm write** — Propose one irreversible-feeling action (crew message or invite). Run `message-crew-gated`. Stop at the gate until the human approves once.
 5. **Receipt** — Show approved/rejected state. Optional settle preview only if they ask.
