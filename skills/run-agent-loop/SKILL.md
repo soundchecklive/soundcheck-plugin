@@ -1,47 +1,33 @@
 ---
 name: run-agent-loop
-description: When to use — run Soundcheck’s flagship agent loop end-to-end: ingest gig paperwork → staff crew → gated confirm on a write (message/invite). Prefer this over ad-hoc tool spam for Muse/ChatGPT/Claude demos.
+description: Run Soundcheck's end-to-end agent loop. Ingest gig paperwork, staff the crew, then send one approved message, all in one organization. Use for a full demo or when the user asks to take a gig from paperwork to staffed.
 ---
 
-# Run the agent loop (ingest → staff → confirm)
+# Run the agent loop
 
-Flagship path for third-party agents (Muse, ChatGPT, Claude, Cursor). Runs on the Soundcheck member MCP (`soundcheck`, OAuth) — the primary server. Goal: one airtight loop humans can trust.
+The loop: ingest the gig's paperwork, staff the crew, then make one write the user approves. It composes the other skills and stays in one organization throughout.
 
-## Loop
+## Sequence
 
-```
-ingest gig → staff crew → gated confirm (message / invite) → optional settle preview
-```
-
-## Skills to compose
-
-1. **ingest-a-gig** — paperwork → proposals → gated commit only after approve
-2. **staff-a-live-event** — event, venue, call list, setlist, checklist
-3. **message-crew-gated** — Confirm Card on `send_message` / `broadcast_event_reminder`
-4. Optional: **settle-a-gig** — money preview / gated settle only if asked
-
-## Sequence (demo-safe)
-
-1. **Cold identity** — `get_me` → `list_organizations`. Name the org (id + name). Do not use another tenant.
-2. **Ingest** — Follow `ingest-a-gig`. If no file, accept pasted advance text via `add_ingestion_text`. Never invent extract fields.
-3. **Staff** — Follow `staff-a-live-event` for missing venue / call list / setlist pieces. Prefer reuse over create.
-4. **Confirm write** — Propose one irreversible-feeling action (crew message or invite). Run `message-crew-gated`. Stop at the gate until the human approves once.
-5. **Receipt** — Show approved/rejected state. Optional settle preview only if they ask.
+1. **Identity.** `get_me` lists the user's organizations. Name the one you will use and do not switch.
+2. **Ingest.** Follow the ingest-a-gig skill. If there is no file, pasted text works too. Never invent extracted fields.
+3. **Plan the day.** If the gig has no times yet, follow the build-run-of-show skill.
+4. **Staff.** Follow the staff-a-live-event skill: shifts on the Staffing board, people attached, reviewed.
+5. **One approved write.** Send the shifts (staff-a-live-event, step 6) or a crew message (message-crew-gated). Stop at the confirmation summary until the user says yes.
+6. **Receipt.** Report what was approved and what the tools returned. Settle money only if asked (settle-a-gig).
 
 ## Success criteria
 
-- Human saw at least one Confirm Card style gate before a write landed
-- Same org throughout
-- No invented crew, times, or money
-- Public-safe narrative (no secrets in demos)
+- The user saw a confirmation summary before anything reached a real person.
+- One organization throughout.
+- No invented crew, times or money.
 
 ## Hard rules
 
-- Prefer fewer tool calls with clear describes over dumping the whole tool list
-- Never skip the confirmation token protocol on gated writes
-- Do not archive events
-- Do not claim Muse/OpenAI listing status in the skill body
+- Prefer a few well-chosen tool calls over trying every tool.
+- Never skip the confirmation step on a gated write.
+- Do not archive or delete gigs.
 
-## Example prompt
+## Example
 
-"Use Soundcheck to ingest this advance, staff Saturday’s gig from our roster, and message FOH about load-in — only after I approve the message."
+"Use Soundcheck to ingest this advance, staff Saturday's gig, and message FOH about load-in, but only after I approve the message."

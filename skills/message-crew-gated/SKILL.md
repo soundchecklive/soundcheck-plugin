@@ -1,49 +1,38 @@
 ---
 name: message-crew-gated
-description: When to use — send a crew message, invitation follow-up, or event reminder through Soundcheck MCP only after the human approves the confirmation gate (Confirm Card style).
+description: Message a gig's crew through Soundcheck only after the user approves. Covers a custom text or email to named people, the standard reminder to the whole gig roster, and nudges to people who have not answered an offer. Every send shows who will be told and waits for a yes.
 ---
 
 # Message crew (gated)
 
-Use when a human asks you to text/email/DM crew, nudge no-shows, or broadcast a load-in reminder for a Soundcheck gig. Member OAuth required. This skill is the **write half** of the agent loop after staffing.
+Use when the user asks to text, email or remind crew, nudge people who have not answered, or broadcast a load-in reminder. Every tool here messages real people, so each one asks for confirmation before it sends.
 
-## Prerequisites
+## Pick the tool
 
-1. Soundcheck MCP connected with member OAuth.
-2. Know the org (`get_me` / `list_organizations`) and the target event (`list_events` / `get_event`).
-3. Prefer existing staffing context (who is INVITED / STANDBY / CONFIRMED) from call lists or event members — do not invent recipients.
-
-## Tools (gated)
-
-These return `confirmation_required` and do **nothing** on the first call:
-
-- `send_message`
-- `broadcast_event_reminder`
-- `invite_org_member` (when messaging is really an invite)
+- Specific people, your own words: `send_message` with their user ids.
+- The standard reminder to everyone on the gig roster: `broadcast_event_reminder`. Declined and standby people are skipped, and draft gigs are refused.
+- People who have not answered a shift: `send_reminder` with kind "crew_offer" and the offer id.
+- People who have not answered an availability check: `send_reminder` with kind "availability_request".
+- The music schedule or details sheet for a gig: `send_gig_documents` (a dry run first, then send with the plan hash the user approved).
 
 ## Sequence
 
-1. **Resolve** — org + event + recipients (or broadcast scope). State channel if known (SMS / email / in-app).
-2. **Draft** — Build the message body the human would approve. Keep it 1–3 short lines for SMS; longer ok for email. Include who / what / when.
-3. **Gate (pending Confirm Card)** — Call the write tool **once without** `confirmation_token`. Surface the returned `summary` as a Confirm Card: title (verb + object), risk chip, helper, diff rows (who / what / when / channel), safe preview.
-4. **Human decision**
-   - Approve → resend the **same** tool call with `confirmation_token`.
-   - Reject / edit → do not send the token; revise draft and gate again if they still want a send.
-5. **Receipt** — After success, report approved/rejected with timestamp. Do not claim delivery beyond what the tool returns.
+1. **Resolve who.** `list_events` and `get_event` for the gig. `preview_event_recipients` shows who a broadcast would reach and on which channel, without sending. For shift crew, `get_crew_offer` lists each person and their answer. Do not invent recipients.
+2. **Draft.** Write the message the user would approve: who, what, when. Keep a text message to one to three short lines.
+3. **Ask.** Call the tool once without a confirmation_token. It answers with status confirmation_required and a summary that names the people who will be notified. Show that summary.
+4. **Send or stop.** On the user's yes, repeat the same call with the confirmation_token. If they edit the draft, ask again with the new text. If they say no, send nothing.
+5. **Report.** Say what the tool returned. Do not claim delivery beyond it.
 
 ## Hard rules
 
-- Never invent or reuse expired confirmation tokens.
-- Never send without an explicit human confirm after showing the gate summary.
-- Do not archive events, settle, or change money as a side effect of messaging.
-- Do not name competing live-event products.
-- Prefer `broadcast_event_reminder` for whole-crew load-in nudges; `send_message` for targeted threads.
+- Never send without the user's yes to the summary, and never reuse an expired token.
+- Set expected_recipient_count from the preview so a changed roster stops the send.
+- Do not change gigs, money or staffing as a side effect of messaging.
 
 ## Example
 
-Human: "Remind Saturday's FOH and A2s about 3pm load-in — only after I approve."
+"Remind Saturday's FOH and A2s about the 3pm load-in, but only after I approve."
 
-1. Resolve Saturday event + FOH/A2 recipients
-2. Draft short load-in reminder
-3. `send_message` without token → show Confirm Card summary
-4. On approve → same call with token → receipt
+1. `get_event` for Saturday's gig, `get_crew_offer` for the FOH and A2 shifts to get their user ids.
+2. Draft: "Load-in Saturday 3pm at the dock. Reply if you're running late."
+3. `send_message` without a token, show the summary, and send with the token after the yes.

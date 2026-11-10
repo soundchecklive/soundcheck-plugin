@@ -1,35 +1,27 @@
 ---
 name: buy-platform-plan
-description: When to use — help a human discover or purchase a Soundcheck platform plan (Starter/Pro/Team) via agentic commerce / Stripe once ACS checkout is enabled; until then, send them to pricing with clear plan diffs.
+description: Help someone choose or start a Soundcheck plan (Starter, Pro, Team, or Enterprise). Explain the plans, start a 14-day trial with the user's approval where the tool is available, or send them to the pricing page.
 ---
 
-# Buy a Soundcheck platform plan
+# Buy a Soundcheck plan
 
-Use when someone asks to buy Soundcheck, upgrade seats, or pick Starter/Pro/Team through an agent. This is **platform SaaS purchase**, not gig settle fees.
-
-## Current state (agents)
-
-- Public pricing: https://soundchecklive.io/pricing
-- Stripe ACS catalog may list plans with `disable_checkout=true` until tax registration clears — if checkout is disabled, do not invent a payment path. Link pricing and explain trials.
-- Muse connector may still be listed as non-payments until SPT/ACS is live.
+Use when someone asks to buy Soundcheck, upgrade, or pick a plan. This is the Soundcheck subscription, not a gig's money (that is settle-a-gig).
 
 ## Sequence
 
-1. **Clarify need** — solo / band / production company → map to Starter / Pro / Team (Enterprise = contact sales).
-2. **Read pricing page facts** — member limits, admin seats, trial. Do not invent prices if tools lack them; use the public pricing URL.
-3. **If ACS/SPT checkout tools exist and checkout is enabled** — follow those tools’ confirmation protocol. Do not paste card numbers.
-4. **If checkout disabled** — send https://soundchecklive.io/pricing (or Book a demo for Enterprise). Say tax/agent checkout is still enabling.
+1. **Clarify the need.** A solo act, a band or a production company maps to Starter, Pro or Team. Enterprise is a conversation with sales.
+2. **Use real facts.** Plan prices and limits are on https://soundchecklive.io/pricing. Do not invent prices or discounts.
+3. **Start a trial, with approval.** For an organization admin, and if the server lists `start_plan_trial`, it starts a 14-day trial with no card. It creates a real subscription that invoices when the trial ends, and each organization gets one trial, so it asks for confirmation: show the summary and repeat the call with the confirmation_token only after the user's yes. If the tool is missing or refuses, send the pricing page instead.
+4. **Billing.** For card changes, invoices and payouts, hand off with `get_soundcheck_link`. Once trials are available (if the server lists `start_plan_trial`), `get_organization` with view "subscription_invoice" also shows an open invoice with its payment link.
 
-## Guardrails
+## Hard rules
 
-- Do not invent promo codes, tax, or invoices.
-- Do not collect raw card data in chat.
-- Do not confuse platform purchase with `settle_event`.
+- Never collect card numbers in chat.
+- Do not invent promo codes, tax or invoices.
 
 ## Example
 
-Human: "Buy Soundcheck Pro for my band through the agent."
+"Get my band on Soundcheck Pro."
 
-1. Confirm Pro fits (≤25 members)
-2. If agent checkout live → gated purchase flow
-3. Else → pricing URL + 14-day trial note
+1. Confirm Pro fits the band.
+2. If the server lists `start_plan_trial`, start a Pro trial with the user's approval; otherwise share the pricing link.
