@@ -44,7 +44,7 @@ Secondary — public no-login fallback for reviewers and discovery (packaged as 
 
 Domains: `soundchecklive.io`, `mcp.soundchecklive.io`, `accounts.soundchecklive.io`.
 
-**Sample test task — `/mcp` (member):** sign in when prompted, then ask: *"List my Soundcheck organizations and show upcoming events for the first one."* (expects `get_me` → `list_organizations` → `list_events`).
+**Sample test task — `/mcp` (member):** sign in when prompted, then ask: *"List my Soundcheck organizations and show upcoming events for the first one."* (expects `get_me` → `list_events`; organizations come from `get_me`).
 
 **Sample test task — `/public/mcp` (no login):** ask: *"What would a 150-guest wedding in Austin with a DJ and sound tech cost?"* (expects `quote_event` with a SYNTHETIC illustrative range).
 
@@ -58,7 +58,8 @@ See [MCP server docs](https://docs.soundchecklive.io/integrations/mcp-server) an
 
 | Piece | Role |
 | --- | --- |
-| MCP `soundcheck` | Member tools for events, crew, setlists, ingest, messaging, imports |
+| MCP `soundcheck` | Member MCP: **249 tools** for events, crew, setlists, ingest, messaging, imports |
+| MCP `soundcheck-public` | Public MCP: **18 tools** (Instant Quotes, event business directory, UEF helpers). See `instant-quotes/` |
 | Skill `staff-a-live-event` | Put shifts on a gig, attach crew, send offers after you approve, message crew |
 | Skill `build-run-of-show` | Key times, timed segments and the setlist for a gig |
 | Skill `ingest-a-gig` | Advance sheets, contracts, riders and spreadsheets → preview → gated commit |
@@ -73,7 +74,7 @@ Consequential writes (`invite_org_member`, `settle_event`, `send_message`, `broa
 
 > Staff Friday's show at the Blue Note — FOH, two A2s, and our usual opener set.
 
-Agent runs `staff-a-live-event`: `get_me` / `list_organizations` → `create_event` → link or create venue → call list + `apply_calllist_to_event` → setlist → checklist.
+Agent runs `staff-a-live-event`: `get_me` → `create_event` → link or create venue → call list + `apply_calllist_to_event` → setlist → checklist.
 
 **Ingest an advance PDF**
 
@@ -85,7 +86,7 @@ Agent runs `ingest-a-gig`: `create_ingestion_batch` → upload/add text → revi
 
 > Clone last tour's workspace into our new production-company org.
 
-Agent runs `clone-workspace`: `export_workspace` on the source → `preview_uef_import` on the dest with commit off → `import_uef` only after you confirm. Destination must be an org you own.
+Agent runs `clone-workspace`: `export_workspace` on the source → `preview_import_file` on the dest with commit off → `import_file` only after you confirm. Destination must be an org you own.
 
 ## Links
 

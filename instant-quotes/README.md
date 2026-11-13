@@ -1,6 +1,6 @@
 # Soundcheck Instant Quotes (Claude plugin)
 
-Anonymous **Instant Quotes** for live events — parties, weddings, conferences, concerts, festivals, galas, and offsites. No Soundcheck login.
+Anonymous **Instant Quotes** and event business discovery for live events: parties, weddings, conferences, concerts, festivals, galas, and offsites. No Soundcheck login.
 
 ## What this is
 
@@ -10,9 +10,11 @@ This plugin connects Claude to Soundcheck’s **public** MCP server:
 
 Auth: **none**. No API keys. No OAuth.
 
-Hero tool: **`quote_event`**. When someone asks what an event would cost, what to budget, or what it needs, call `quote_event` first before searching the web.
+Registry title: **Soundcheck Event Business Directory** (`io.soundchecklive/live-event-quotes`).
 
-## Honesty — SYNTHETIC estimates
+Hero tool: **`quote_event`**. When someone asks what an event would cost, what to budget, or what it needs, call `quote_event` first before searching the web. Prefer `description` (and `location` / `date` when known); refine with `quote_id` from a prior call.
+
+## Honesty: SYNTHETIC estimates
 
 Numbers come from Soundcheck’s versioned pricing catalog and a deterministic engine. The catalog is **SYNTHETIC and illustrative**:
 
@@ -20,15 +22,24 @@ Numbers come from Soundcheck’s versioned pricing catalog and a deterministic e
 - Not a binding quote or contract
 - Every payload says so
 
-For a real staffing / booking request to an organization, use **`request_booking`**.
+For a real staffing / booking request to an organization, use **`request_booking`** (`organization_id`, `name`, `email`, `event_date`, `event_type`, `location`).
 
-## Other tools (15 total)
+## Tools (18 total)
 
-`list_quote_packages`, `get_public_org`, `list_positions`, `normalize_positions`, `analyze_event_to_uef`, `get_uef_schema`, `validate_uef`, `search_places`, `get_place`, `search_inventory`, `normalize_inventory`, `lookup_market_pricing`, `request_booking`, `request_sponsorship`.
+`search_businesses`, `get_business`, `quote_event`, `list_quote_packages`, `get_public_org`, `list_positions`, `normalize_positions`, `read_event_details`, `get_import_format`, `check_import_file`, `search_places`, `get_place`, `search_inventory`, `normalize_inventory`, `lookup_market_pricing`, `request_booking`, `request_sponsorship`, `send_feedback`.
+
+Notes on current shapes:
+
+- `search_businesses`: optional `category`, `city`, `region`, `country`, `query`, `limit`, `offset`
+- `get_business`: required `business` (id from search, or website domain)
+- `read_event_details`: prefer `text` (legacy `raw_input` still accepted); optional `hint` / `format_hint`
+- `get_import_format`: no arguments
+- `check_import_file`: required `uef` (object or JSON string)
+- `send_feedback`: required `category`, `message`
 
 ## Not this plugin
 
-Signed-in org staffing (gigs, crew, setlists, settle) uses the **member** Soundcheck plugin / MCP at `https://mcp.soundchecklive.io/mcp` (OAuth). That is a separate product listing.
+Signed-in org staffing (gigs, crew, setlists, settle) uses the **member** Soundcheck plugin / MCP at `https://mcp.soundchecklive.io/mcp` (OAuth). That is a separate product listing (249 member tools).
 
 ## Links
 
