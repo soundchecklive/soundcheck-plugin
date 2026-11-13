@@ -1,0 +1,27 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.soundchecklive/live-event-quotes",
+  "title": "Soundcheck Event Business Directory",
+  "description": "Find event businesses by category and city, plus live-event pricing and planning tools",
+  "version": "0.1.0",
+  "websiteUrl": "https://soundchecklive.io",
+  "repository": {
+    "url": "https://github.com/soundchecklive/soundcheck-plugin",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/soundchecklive/soundcheck-plugin/main/assets/logo.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.soundchecklive.io/public/mcp"
+    }
+  ]
+}

@@ -4,7 +4,7 @@
   "title": "Soundcheck",
   "description": "Staff live events: gigs, crew, setlists, call lists, ingest. Hosted MCP with OAuth.",
   "version": "0.1.1-ts",
-  "websiteUrl": "https://docs.soundchecklive.io/integrations/mcp-server",
+  "websiteUrl": "https://soundchecklive.io",
   "repository": {
     "url": "https://github.com/soundchecklive/soundcheck-plugin",
     "source": "github"
@@ -13,7 +13,9 @@
     {
       "src": "https://raw.githubusercontent.com/soundchecklive/soundcheck-plugin/main/assets/logo.png",
       "mimeType": "image/png",
-      "sizes": ["512x512"]
+      "sizes": [
+        "512x512"
+      ]
     }
   ],
   "remotes": [

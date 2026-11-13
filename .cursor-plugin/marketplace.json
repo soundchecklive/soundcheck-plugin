@@ -5,19 +5,19 @@
     "email": "info@soundchecklive.io"
   },
   "metadata": {
-    "description": "Soundcheck live-event plugins: member ops MCP and public Instant Quotes.",
-    "version": "0.3.0"
+    "description": "Soundcheck live-event plugins: member ops MCP (249 tools) and public Instant Quotes / event business directory (18 tools).",
+    "version": "0.4.0"
   },
   "plugins": [
     {
       "name": "soundcheck",
       "source": ".",
-      "description": "Soundcheck member MCP for live-event staffing and ops (OAuth)."
+      "description": "Soundcheck member MCP for live-event staffing and ops (OAuth, 249 tools)."
     },
     {
       "name": "soundcheck-instant-quotes",
       "source": "instant-quotes",
-      "description": "Soundcheck Instant Quotes — anonymous live-event cost estimates (no login)."
+      "description": "Soundcheck Instant Quotes and event business directory \u2014 anonymous public MCP (18 tools, no login)."
     }
   ]
 }
