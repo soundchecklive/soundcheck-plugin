@@ -117,7 +117,7 @@ This repository also packages plugins for Anthropic’s Claude Plugins directory
 
 | Plugin path | Product | MCP | Auth |
 | --- | --- | --- | --- |
-| repo root (`.claude-plugin/`) | **Soundcheck** member staffing / ops | `https://mcp.soundchecklive.io/mcp` | OAuth |
+| repo root (`.claude-plugin/`, plugin name `soundcheck-live`) | **Soundcheck** member staffing / ops | `https://mcp.soundchecklive.io/mcp` | OAuth |
 | `instant-quotes/` | **Soundcheck Instant Quotes** | `https://mcp.soundchecklive.io/public/mcp` | None |
 
 Instant Quotes estimates are **SYNTHETIC / illustrative**, not binding. Member Soundcheck is signed-in org ops — a different product.
