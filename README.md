@@ -59,9 +59,11 @@ See [MCP server docs](https://docs.soundchecklive.io/integrations/mcp-server) an
 | Piece | Role |
 | --- | --- |
 | MCP `soundcheck` | Member tools for events, crew, setlists, ingest, messaging, imports |
-| Skill `staff-a-live-event` | Create and staff a gig end-to-end |
-| Skill `ingest-a-gig` | Batch → add docs → review → gated commit |
-| Skill `clone-workspace` | Export → preview UEF → gated import into an org you own |
+| Skill `staff-a-live-event` | Put shifts on a gig, attach crew, send offers after you approve, message crew |
+| Skill `build-run-of-show` | Key times, timed segments and the setlist for a gig |
+| Skill `ingest-a-gig` | Advance sheets, contracts, riders and spreadsheets → preview → gated commit |
+| Skill `settle-a-gig` | Read the ledger, then complete, settle or reopen a gig |
+| Skill `clone-workspace` | Export → preview → gated import into an org you manage |
 
 Consequential writes (`invite_org_member`, `settle_event`, `send_message`, `broadcast_event_reminder`, ingestion/import commits, and related gated tools) return `confirmation_required`. The agent should show you the summary and only resend with the token after you confirm.
 
@@ -100,13 +102,13 @@ MIT © Soundcheck Live, Inc.
 
 ## Skills
 
-- `clone-workspace` — clone catalogs between orgs you own
-- `ingest-a-gig` — paperwork → gated commit
-- `staff-a-live-event` — event, venue, call list, setlist, checklist
-- `message-crew-gated` — Confirm Card on crew message / reminder
-- `settle-a-gig` — gated settle / complete / reopen
-- `run-agent-loop` — ingest → staff → confirm (demo path)
-- `buy-platform-plan` — platform SaaS purchase / pricing handoff
+The skills are exported from the Soundcheck monorepo (`mcp-ts/skills/`), the same text the MCP server serves. Do not edit them here.
+
+- `staff-a-live-event` — shifts, crew, offers and crew messages, each send approved first
+- `build-run-of-show` — key times, segments and the setlist
+- `ingest-a-gig` — gig paperwork and spreadsheets → preview → gated commit
+- `settle-a-gig` — ledger, then gated complete / settle / reopen
+- `clone-workspace` — copy one org you manage into another
 
 
 ## Claude plugins (directory)
@@ -119,3 +121,11 @@ This repository also packages plugins for Anthropic’s Claude Plugins directory
 | `instant-quotes/` | **Soundcheck Instant Quotes** | `https://mcp.soundchecklive.io/public/mcp` | None |
 
 Instant Quotes estimates are **SYNTHETIC / illustrative**, not binding. Member Soundcheck is signed-in org ops — a different product.
+
+To try the member plugin in Claude Code before the directory listing is live, start it from a checkout of this repository:
+
+```bash
+claude --plugin-dir /path/to/this-repo
+```
+
+Claude Code asks you to sign in to Soundcheck with OAuth the first time a tool runs.
