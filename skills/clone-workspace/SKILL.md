@@ -1,43 +1,31 @@
 ---
 name: clone-workspace
-description: When to use — copy one Soundcheck organization's catalogs (crew, venues, songs, events, etc.) into another org the user owns via export_workspace → preview_uef_import → import_uef, with human confirmation before commit.
+description: Copy one Soundcheck organization's data (crew, clients, venues, inventory, songs, setlists, gigs with their shifts, leads) into another organization the user manages. Export, preview on the destination, and import only after the user approves.
 ---
 
 # Clone a workspace
 
-Use this skill when a human wants to clone a sandbox, last tour's org, or golden fixture into a destination organization. Member OAuth only. Destination must be an org the user **owns** (or can administer for UEF import). Public MCP cannot clone workspaces.
-
-## Prerequisites
-
-1. Soundcheck MCP connected with member OAuth.
-2. Identify **source** and **destination** org ids via `list_organizations` / `get_organization`.
-3. Confirm the human owns (or may import into) the destination. Do not import into a production org they did not explicitly name.
-4. Remind them what does **not** transfer: money/ledger, file blobs, branding, forms, integration tokens, invitation accept state, tours/run-of-show links, and similar non-export fields.
+Use when the user wants to copy a sandbox, last tour's organization or a sample workspace into another organization. The destination must be one the user owns or manages.
 
 ## Sequence
 
-1. **Export source** — `export_workspace` on the source organization. Keep the returned UEF / workspace payload for the next steps.
-2. **Dry-run on dest** — `preview_uef_import` on the destination with `committed: false` (preview / dry run). Show counts, warnings, and what would be created vs matched.
-3. **Human gate** — Summarize the preview. Do **not** call `import_uef` until they explicitly confirm the destination and the payload.
-4. **Commit** — `import_uef` is confirmation-gated:
-   - Call once without a token → show `summary`
-   - Resend with `confirmation_token` only after they confirm
-5. **Verify** — Spot-check with reads (`list_org_members`, `list_venues`, `list_events`, etc.) and report what landed vs what stayed out of the dump.
+1. **Pick both organizations.** `get_me` lists the user's organizations with their roles. Confirm the source and the destination by name. Never import into an organization the user did not name.
+2. **Say what stays behind.** The export leaves out lead budgets, inventory replacement costs, crew performance fees, files, branding and integration tokens. Tell the user before starting.
+3. **Export.** `export_workspace` on the source returns one Soundcheck import file. Keep it for the next steps.
+4. **Preview.** `preview_import_file` with that document on the destination writes nothing. Show the new and updated counts and any errors.
+5. **Import, with approval.** `import_file` writes the records and may email organization invitations to team members in the file, so it asks for confirmation. Show the summary, wait for the user's yes, then repeat the call with the confirmation_token.
+6. **Check.** Spot-check with `list_org_members`, `list_venues` and `list_events` on the destination, and report what landed.
 
 ## Hard rules
 
-- Import only into an org the user owns or is allowed to import into; confirm this rather than assuming it.
-- Run a preview with `committed: false` (or equivalent dry-run) before `import_uef`.
-- Money, files, branding, and secrets stay out of the clone; say so up front.
-- Do not use public `request_booking` / `request_sponsorship` for workspace clone.
-- Do not name competing live-event products.
+- Always preview before importing.
+- Money, files, branding and secrets do not transfer; say so up front.
 
 ## Example
 
-Human: "Clone last tour's org into our new production company org."
+"Clone last tour's org into our new production company."
 
-1. `list_organizations` — pick last-tour source and the new company dest (owned)
-2. `export_workspace` on source
-3. `preview_uef_import` on dest (`committed: false`) — show catalog counts and warnings
-4. After explicit confirm → `import_uef` (gate → confirm → token)
-5. Summarize restored catalogs and exclusions
+1. `get_me` to find both organizations.
+2. `export_workspace` on last tour's organization.
+3. `preview_import_file` on the new company and show the counts.
+4. After the user's yes, `import_file` with confirmation, then spot-check.

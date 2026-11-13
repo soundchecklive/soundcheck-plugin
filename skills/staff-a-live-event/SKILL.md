@@ -1,61 +1,59 @@
 ---
 name: staff-a-live-event
-description: When to use — staff or set up a live event (gig) in Soundcheck as a signed-in member: create the event, link a venue, apply a call list, build a setlist, and work the checklist. Prefer OAuth member tools over public intake.
+description: Staff a Soundcheck gig with crew and message them. Find or create the gig, put shifts on its Staffing board, attach people, review, send crew offers only after the user approves, and follow up. Also covers texting or emailing crew, the standard roster reminder and nudges, each sent only after the user approves. Use when the user asks to staff, crew or fill a gig, send offers, message or remind crew, or chase people who have not answered.
 ---
 
 # Staff a live event
 
-Use this skill when a human asks you to create, staff, or prep a gig in Soundcheck (Friday show, wedding, corporate booking, tour date). You are a third-party agent acting as the signed-in user. Connect with member OAuth first; do not invent API keys.
+Shifts (crew offers) are how people get onto a gig. Nothing reaches anyone until step 6, and every send needs the user's yes. You act as the signed-in member.
 
-## Prerequisites
+1. **Pick the organization.** `get_me` lists the user's organizations. Say which one you will use and stay in it.
+2. **Find the gig.** `list_events` (match row.event.title), then `get_event` for its dates and roster. If it does not exist, ask whether it should be a draft or live, then `create_event`. To set its venue, find it with `list_venues` (or add it with `save_venue`) and `link_venue_to_event`.
+3. **Pick positions.** `list_org_positions` lists the roles this org staffs. Use its names; do not invent roles. If the list is empty, add one with `save_org_position`.
+4. **Put shifts on the Staffing board.** Either:
+   - From a team template: `get_staffing_plan` with scope "templates" to choose one, then `apply_calllist_to_event`. It makes one draft shift per position slot with the template's people penciled in, and sends nothing.
+   - By hand: `save_crew_offer` with title, event_id, org_position_id, a date or days, call times and fee.
 
-1. Confirm the Soundcheck MCP server is connected via OAuth (member path).
-2. Call `get_me`, then `list_organizations`, and confirm which org is active for this work.
-3. Prefer member tools. Use public intake (`request_booking` / `request_sponsorship`) only as a last resort when the human is **not** a member and only needs anonymous lead intake — never for staffing their own org.
+   Venue or union stagehand counts are hands, not named people: set them with `save_gig_labor_call`.
 
-## Sequence
+5. **Attach people and review.** On a draft shift, the people you pass to `save_crew_offer` replace everyone attached, so read the shift with `get_crew_offer` first and send the full list to keep (offer_id plus recipient_ids, or recipients with each per-person fee), the people already there included. Then `review_staffing_draft` shows every shift with seats, fees, who is attached and any time overlaps. Tell the user about overlaps before sending.
+6. **Send, with approval.** Call `send_crew_offer` for each shift. When it answers with status confirmation_required, show the summary (it names the shift and everyone who will be notified), wait for the user's yes, then repeat the same call with the confirmation_token. Never send without that yes.
+7. **Follow up.** `get_crew_offer`, or `list_crew_offers` with scope "organization" and the event_id, shows who accepted, declined or has not answered. Nudge the quiet ones with `send_reminder` and kind "crew_offer" (also gated). To ask someone who declined again, call `send_crew_offer` with their id in recipient_ids and the days in reask_dates.
 
-Work in this order unless the human already has some steps done:
+## Message crew
 
-1. **Identity** — `get_me` → `list_organizations`. State which org you will use.
-2. **Create the event** — `create_event` with name, date(s), and any known details. Pass `member_ids` only when the human asks to change the default (authenticated user is added by default).
-3. **Venue** — `list_venues` / `get_venue`. If it exists, `link_venue_to_event`. If not, `create_venue` then link.
-4. **Call list** — Reuse with `list_calllists` / `get_calllist`, or `create_calllist` / `update_calllist`. Then `apply_calllist_to_event` (primaries → `INVITED`, backups → `STANDBY`). Re-apply adds 0 new rows.
-5. **Setlist** — `create_song` as needed, then `create_setlist` / `update_setlist` for the event.
-6. **Checklist** — `get_event_checklist`, then `update_checklist_task` (pass `checklist_version` from the latest read).
+Every tool here messages real people, so each one asks for confirmation before it sends.
 
-Optional follow-ups after the core setup: availability requests, mailbox accepts/declines, messaging, or settlement — only when asked.
+- Specific people, your own words: `send_message` with their user ids.
+- The standard reminder to everyone on the gig roster: `broadcast_event_reminder`. Declined and standby people are skipped, and draft gigs are refused.
+- People who have not answered a shift: `send_reminder` with kind "crew_offer" and the offer id.
+- People who have not answered an availability check: `send_reminder` with kind "availability_request".
+- The music schedule or details sheet for a gig: `send_gig_documents` (a dry run first, then send with the plan hash the user approved).
 
-## Confirmation-gated writes
+1. **Resolve who.** `preview_event_recipients` shows who a broadcast would reach and on which channel, without sending. For shift crew, `get_crew_offer` lists each person and their answer. Do not invent recipients.
+2. **Draft.** Write the message the user would approve: who, what, when. Keep a text message to one to three short lines.
+3. **Ask.** Call the tool once without a confirmation_token. It answers with status confirmation_required and a summary that names the people who will be notified. Show that summary. Set expected_recipient_count from the preview so a changed roster stops the send.
+4. **Send or stop.** On the user's yes, repeat the same call with the confirmation_token. If they edit the draft, ask again with the new text. If they say no, send nothing. Never reuse an expired token.
+5. **Report.** Say what the tool returned. Do not claim delivery beyond it, and do not change gigs, money or staffing as a side effect of messaging.
 
-These tools return `confirmation_required` (with `confirmation_token`, `summary`, `expires_in_seconds`) and do **nothing** on the first call:
+## Watch for
 
-- `invite_org_member`
-- `settle_event` (also `complete_event`, `reopen_event`)
-- `send_message`
-- `broadcast_event_reminder`
-
-**Protocol:**
-
-1. Call once **without** a confirmation token.
-2. Show the returned `summary` to the human.
-3. Resend the **same** call with the token **only** if they confirm.
-4. Do not invent or reuse expired tokens.
-
-## Hard rules
-
-- Do not call `archive_event` unless the human explicitly asks to archive. It is still ungated.
-- Do not settle, message crew, broadcast reminders, or invite org members without human confirmation via the gate above.
-- Do not name competing live-event products.
-- Do not claim data you did not read from tools.
+- Crew offers are not held back by a draft gig: a sent shift reaches people even while the gig is hidden from crew. Say so when the gig is a draft.
+- Changing the date, call times or pay of a shift that was already sent messages everyone on it. Treat it like a send and get the user's yes.
+- For the day-of plan and setlist, use the build-run-of-show skill. For pre-show tasks, `get_event_checklist` and `update_checklist_task`.
+- Report only what the tools returned. Do not invent crew, times or fees.
 
 ## Example
 
-Human: "Staff Friday's show at the Blue Note — FOH, two A2s, and our usual opener set."
+"Staff Friday's show at the Blue Note: FOH, two A2s."
 
-1. `get_me` / `list_organizations`
-2. `create_event` for Friday
-3. Find or create Blue Note → `link_venue_to_event`
-4. Build or reuse a call list with FOH + A2 seats → `apply_calllist_to_event`
-5. Add opener songs → setlist tools
-6. Walk open checklist items with `get_event_checklist` / `update_checklist_task`
+1. `get_me`, then `list_events` to find Friday's gig.
+2. `list_org_positions` to get the FOH and A2 position ids.
+3. `save_crew_offer` for a FOH shift (1 seat) and an A2 shift (2 seats), attaching the people the user names.
+4. `review_staffing_draft`, then `send_crew_offer` for each shift after the user approves the summary.
+
+"Remind Saturday's FOH and A2s about the 3pm load-in, but only after I approve."
+
+1. `get_event` for Saturday's gig, `get_crew_offer` for the FOH and A2 shifts to get their user ids.
+2. Draft: "Load-in Saturday 3pm at the dock. Reply if you're running late."
+3. `send_message` without a token, show the summary, and send with the token after the yes.
