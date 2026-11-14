@@ -3,7 +3,7 @@
   "name": "io.soundchecklive/live-event-quotes",
   "title": "Soundcheck Event Business Directory",
   "description": "Find event businesses by category and city, plus live-event pricing and planning tools",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "websiteUrl": "https://soundchecklive.io",
   "repository": {
     "url": "https://github.com/soundchecklive/soundcheck-plugin",
