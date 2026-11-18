@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "soundcheck",
-      "source": ".",
+      "source": "./soundcheck",
       "description": "Soundcheck member MCP for live-event staffing and ops (OAuth, 249 tools)."
     },
     {
