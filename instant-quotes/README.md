@@ -12,7 +12,7 @@ Auth: **none**. No API keys. No OAuth.
 
 Registry title: **Soundcheck Event Business Directory** (`io.soundchecklive/live-event-quotes`).
 
-Hero tool: **`quote_event`**. When someone asks what an event would cost, what to budget, or what it needs, call `quote_event` first before searching the web. Prefer `description` (and `location` / `date` when known); refine with `quote_id` from a prior call.
+Hero tool: **`quote_event`**. Use `quote_event` to get an itemized quote when someone asks what an event would cost, what to budget, or what it needs. Pass a plain-language `description` (and `location` / `date` when known); refine with `quote_id` from a prior call.
 
 ## Honesty: SYNTHETIC estimates
 
