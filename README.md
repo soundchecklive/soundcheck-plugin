@@ -118,7 +118,7 @@ This repository also packages plugins for Anthropic’s Claude Plugins directory
 
 | Plugin path | Product | MCP | Auth |
 | --- | --- | --- | --- |
-| repo root (`.claude-plugin/`, plugin name `soundcheck`, display name Soundcheck) | **Soundcheck** member staffing / ops | `https://mcp.soundchecklive.io/mcp` | OAuth |
+| `soundcheck/` (`.claude-plugin/`, plugin name `soundcheck`, display name Soundcheck) | **Soundcheck** member staffing / ops | `https://mcp.soundchecklive.io/mcp` | OAuth |
 | `instant-quotes/` | **Soundcheck Instant Quotes** | `https://mcp.soundchecklive.io/public/mcp` | None |
 
 Instant Quotes estimates are **SYNTHETIC / illustrative**, not binding. Member Soundcheck is signed-in org ops — a different product.
@@ -126,7 +126,7 @@ Instant Quotes estimates are **SYNTHETIC / illustrative**, not binding. Member S
 To try the member plugin in Claude Code before the directory listing is live, start it from a checkout of this repository:
 
 ```bash
-claude --plugin-dir /path/to/this-repo
+claude --plugin-dir /path/to/this-repo/soundcheck
 ```
 
 Claude Code asks you to sign in to Soundcheck with OAuth the first time a tool runs.
