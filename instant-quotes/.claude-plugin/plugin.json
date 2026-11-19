@@ -1,8 +1,9 @@
 {
   "name": "soundcheck-instant-quotes",
+  "displayName": "Soundcheck Event Directory",
   "version": "0.4.0",
   "icon": "./assets/logo.png",
-  "description": "Soundcheck Instant Quotes and event business directory: anonymous public MCP (18 tools) for live-event cost estimates and vendor discovery. Use quote_event to get an itemized quote for parties, weddings, conferences, concerts, and offsites; use search_businesses / get_business to find vendors. No login. Estimates are SYNTHETIC and illustrative from a versioned catalog (not real COGS, not a binding quote); use request_booking for a real staffing request.",
+  "description": "Soundcheck is live event digital infrastructure: the primitives agents need to manage any type of event. This public MCP server needs no login and opens Soundcheck's event directory: event businesses such as AV and production companies, DJs, bands, agencies, caterers, photographers, rentals, staffing and security, searchable by category and city, plus a catalog of well-known venues and hotels. Standard-data tools map crew roles and gear to shared catalogs and check event files against the Universal Event Format. Evidence-backed market pricing and illustrative cost estimates are also included.",
   "author": {
     "name": "Soundcheck Live, Inc.",
     "email": "info@soundchecklive.io"
@@ -15,7 +16,10 @@
     "soundcheck live",
     "soundcheck mcp",
     "instant quotes",
-    "soundcheck instant quotes"
+    "soundcheck instant quotes",
+    "event directory",
+    "event vendors",
+    "live events"
   ],
   "privacyPolicyUrl": "https://soundchecklive.io/privacy"
 }

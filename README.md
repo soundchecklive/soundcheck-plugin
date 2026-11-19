@@ -2,11 +2,11 @@
   <img src="assets/logo.png" alt="Soundcheck" width="128" height="128" />
 </p>
 
-# Soundcheck for Cursor
+# Soundcheck: Live Event Ops for Cursor
 
 [![smithery badge](https://smithery.ai/badge/steven-pd2q/soundcheck)](https://smithery.ai/servers/steven-pd2q/soundcheck)
 
-Cursor plugin that connects Agent to **Soundcheck** — live-event staffing for gigs, crew, setlists, call lists, and document ingest. **Headline: the Soundcheck member MCP** (`https://mcp.soundchecklive.io/mcp`) — sign in with OAuth, no API keys, and run your org's gigs, crew, setlists, and settlement from your agent. A secondary no-login public MCP is included only as a fallback for reviewers and discovery.
+Cursor plugin that connects Agent to **Soundcheck** — live-event staffing for gigs, crew, setlists, call lists, and document ingest. **Headline: the Soundcheck member MCP** (`https://mcp.soundchecklive.io/mcp`) — sign in with OAuth, no API keys, and run your org's gigs, crew, setlists, and settlement from your agent. A separate no-login public MCP, the **Soundcheck Event Directory** (vendors, talent, venues and standard event data), is packaged in `instant-quotes/`.
 
 Smithery: https://smithery.ai/servers/steven-pd2q/soundcheck
 
@@ -31,7 +31,7 @@ Documented member connect URL (used in `mcp.json`):
 
 `https://mcp.soundchecklive.io/mcp`
 
-Secondary — public no-login fallback for reviewers and discovery (packaged as `soundcheck-public`):
+Public live event directory, no login (packaged as `soundcheck-public`):
 
 `https://mcp.soundchecklive.io/public/mcp`
 
@@ -40,17 +40,17 @@ Secondary — public no-login fallback for reviewers and discovery (packaged as 
 | Server | URL | Auth |
 | --- | --- | --- |
 | `soundcheck` (member, primary) | `https://mcp.soundchecklive.io/mcp` | OAuth 2.0 via Soundcheck sign-in (`accounts.soundchecklive.io`). No API keys. |
-| `soundcheck-public` (secondary, no-login fallback) | `https://mcp.soundchecklive.io/public/mcp` | None (no login) |
+| `soundcheck-public` (public live event directory) | `https://mcp.soundchecklive.io/public/mcp` | None (no login) |
 
 Domains: `soundchecklive.io`, `mcp.soundchecklive.io`, `accounts.soundchecklive.io`.
 
 **Sample test task — `/mcp` (member):** sign in when prompted, then ask: *"List my Soundcheck organizations and show upcoming events for the first one."* (expects `get_me` → `list_events`; organizations come from `get_me`).
 
-**Sample test task — `/public/mcp` (no login):** ask: *"What would a 150-guest wedding in Austin with a DJ and sound tech cost?"* (expects `quote_event` with a SYNTHETIC illustrative range).
+**Sample test task — `/public/mcp` (no login):** ask: *"Find DJs and sound companies in Austin for a 150-guest wedding, and give a ballpark budget."* (expects `search_businesses`, then `quote_event` with a SYNTHETIC illustrative range; directory coverage varies by city and category).
 
 ## Reviewer notes
 
-A reviewer test account is provided privately in the marketplace submission form so reviewers can sign into the member MCP (`soundcheck`, `/mcp`) and exercise the full experience. `soundcheck-public` is only a no-login fallback. No credentials are stored in this repository. Gated writes (messages, invites, settle, imports) return `confirmation_required` and do nothing until confirmed.
+A reviewer test account is provided privately in the marketplace submission form so reviewers can sign into the member MCP (`soundcheck`, `/mcp`) and exercise the full experience. `soundcheck-public` is the separate no-login public directory. No credentials are stored in this repository. Gated writes (messages, invites, settle, imports) return `confirmation_required` and do nothing until confirmed.
 
 See [MCP server docs](https://docs.soundchecklive.io/integrations/mcp-server) and [MCP discovery](https://docs.soundchecklive.io/integrations/mcp-discovery).
 
@@ -59,7 +59,7 @@ See [MCP server docs](https://docs.soundchecklive.io/integrations/mcp-server) an
 | Piece | Role |
 | --- | --- |
 | MCP `soundcheck` | Member MCP: **249 tools** for events, crew, setlists, ingest, messaging, imports |
-| MCP `soundcheck-public` | Public MCP: **18 tools** (Instant Quotes, event business directory, UEF helpers). See `instant-quotes/` |
+| MCP `soundcheck-public` | Public MCP: **18 tools**: live event directory (event businesses, venues and hotels, public org profiles), standard event data (crew roles, gear, UEF files), market pricing and illustrative estimates. See `instant-quotes/` |
 | Skill `staff-a-live-event` | Put shifts on a gig, attach crew, send offers after you approve, message crew |
 | Skill `build-run-of-show` | Key times, timed segments and the setlist for a gig |
 | Skill `ingest-a-gig` | Advance sheets, contracts, riders and spreadsheets → preview → gated commit |
@@ -119,9 +119,9 @@ This repository also packages plugins for Anthropic’s Claude Plugins directory
 | Plugin path | Product | MCP | Auth |
 | --- | --- | --- | --- |
 | `soundcheck/` (`.claude-plugin/`, plugin name `soundcheck`, display name Soundcheck) | **Soundcheck** member staffing / ops | `https://mcp.soundchecklive.io/mcp` | OAuth |
-| `instant-quotes/` | **Soundcheck Instant Quotes** | `https://mcp.soundchecklive.io/public/mcp` | None |
+| `instant-quotes/` (plugin name `soundcheck-instant-quotes`) | **Soundcheck public live event directory** | `https://mcp.soundchecklive.io/public/mcp` | None |
 
-Instant Quotes estimates are **SYNTHETIC / illustrative**, not binding. Member Soundcheck is signed-in org ops — a different product.
+The public plugin's `quote_event` estimates are **SYNTHETIC / illustrative**, not binding. Member Soundcheck is signed-in org ops — a different product.
 
 To try the member plugin in Claude Code before the directory listing is live, start it from a checkout of this repository:
 
