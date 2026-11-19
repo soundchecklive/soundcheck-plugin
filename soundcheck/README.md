@@ -2,13 +2,13 @@
   <img src="assets/logo.png" alt="Soundcheck" width="128" height="128" />
 </p>
 
-# Soundcheck
+# Soundcheck: Live Event Ops
 
 This plugin connects Claude to the **Soundcheck member MCP** so you can staff and run live events from a conversation: gigs, crew shifts and offers, call lists, run of show and setlists, venues, gig-file import, and settlement.
 
 Sign in with OAuth. There are no API keys. The hosted endpoint is `https://mcp.soundchecklive.io/mcp` (249 tools). Anything that messages crew asks you first and names who will be told. Consequential writes return `confirmation_required` and do nothing until you confirm.
 
-A no-login public MCP (`https://mcp.soundchecklive.io/public/mcp`, 18 tools) is included as a fallback for reviewers and discovery. Instant Quotes estimates from that public server are SYNTHETIC and illustrative, not a binding quote.
+A no-login public MCP, the **Soundcheck Event Directory** (`https://mcp.soundchecklive.io/public/mcp`, 18 tools), is included as a fallback for reviewers and discovery. Cost estimates from that public server are SYNTHETIC and illustrative, not a binding quote.
 
 ## Skills
 

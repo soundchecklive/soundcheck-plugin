@@ -2,11 +2,11 @@
   <img src="assets/logo.png" alt="Soundcheck" width="128" height="128" />
 </p>
 
-# Soundcheck for Cursor
+# Soundcheck: Live Event Ops for Cursor
 
 [![smithery badge](https://smithery.ai/badge/steven-pd2q/soundcheck)](https://smithery.ai/servers/steven-pd2q/soundcheck)
 
-Cursor plugin that connects Agent to **Soundcheck** — live-event staffing for gigs, crew, setlists, call lists, and document ingest. **Headline: the Soundcheck member MCP** (`https://mcp.soundchecklive.io/mcp`) — sign in with OAuth, no API keys, and run your org's gigs, crew, setlists, and settlement from your agent. A separate no-login public MCP, the Soundcheck live event directory (vendors, talent, venues and standard event data), is packaged in `instant-quotes/`.
+Cursor plugin that connects Agent to **Soundcheck** — live-event staffing for gigs, crew, setlists, call lists, and document ingest. **Headline: the Soundcheck member MCP** (`https://mcp.soundchecklive.io/mcp`) — sign in with OAuth, no API keys, and run your org's gigs, crew, setlists, and settlement from your agent. A separate no-login public MCP, the **Soundcheck Event Directory** (vendors, talent, venues and standard event data), is packaged in `instant-quotes/`.
 
 Smithery: https://smithery.ai/servers/steven-pd2q/soundcheck
 

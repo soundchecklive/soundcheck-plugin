@@ -1,4 +1,4 @@
-# Soundcheck public MCP: live event directory (Claude plugin)
+# Soundcheck Event Directory (public MCP, no login)
 
 Soundcheck is live event digital infrastructure: the primitives agents need to manage any type of event. This plugin connects Claude to Soundcheck's **public** MCP server, an anonymous live event directory and the data standards behind it. No Soundcheck login.
 
@@ -8,7 +8,7 @@ Soundcheck is live event digital infrastructure: the primitives agents need to m
 
 Auth: **none**. No API keys. No OAuth.
 
-Registry: **Soundcheck Event Business Directory** (`io.soundchecklive/live-event-quotes`). The plugin keeps its original `soundcheck-instant-quotes` name and `quote-an-event` skill name so existing installs and listings keep working.
+Name: **Soundcheck Event Directory** (registry id `io.soundchecklive/live-event-quotes`). The member server is **Soundcheck: Live Event Ops**. The plugin keeps its original `soundcheck-instant-quotes` name and `quote-an-event` skill name so existing installs and listings keep working.
 
 ## What it covers
 

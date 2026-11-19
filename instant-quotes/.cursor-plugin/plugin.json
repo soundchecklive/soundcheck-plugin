@@ -1,6 +1,6 @@
 {
   "name": "soundcheck-instant-quotes",
-  "displayName": "Soundcheck Instant Quotes",
+  "displayName": "Soundcheck Event Directory",
   "version": "0.4.0",
   "description": "Soundcheck public MCP, no login (18 tools): a live event directory of vendors, talent, venues and hotels, plus standard data for crew roles, gear and event files, evidence-backed market pricing and illustrative cost estimates.",
   "author": {

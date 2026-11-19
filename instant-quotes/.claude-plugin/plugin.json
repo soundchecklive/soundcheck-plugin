@@ -1,5 +1,6 @@
 {
   "name": "soundcheck-instant-quotes",
+  "displayName": "Soundcheck Event Directory",
   "version": "0.4.0",
   "icon": "./assets/logo.png",
   "description": "Soundcheck is live event digital infrastructure: the primitives agents need to manage any type of event. This public MCP server needs no login and opens Soundcheck's event directory: event businesses such as AV and production companies, DJs, bands, agencies, caterers, photographers, rentals, staffing and security, searchable by category and city, plus a catalog of well-known venues and hotels. Standard-data tools map crew roles and gear to shared catalogs and check event files against the Universal Event Format. Evidence-backed market pricing and illustrative cost estimates are also included.",
