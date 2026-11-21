@@ -6,12 +6,12 @@
   },
   "metadata": {
     "description": "Soundcheck live-event plugins: member ops MCP (249 tools) and public Instant Quotes / event business directory (18 tools).",
-    "version": "0.4.0"
+    "version": "0.4.1"
   },
   "plugins": [
     {
       "name": "soundcheck",
-      "source": "./soundcheck",
+      "source": ".",
       "description": "Soundcheck member MCP for live-event staffing and ops (OAuth, 249 tools)."
     },
     {

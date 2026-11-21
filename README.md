@@ -1,8 +1,6 @@
-<p align="center">
-  <img src="assets/logo.png" alt="Soundcheck" width="128" height="128" />
-</p>
+![Soundcheck](assets/logo.png)
 
-# Soundcheck: Live Event Ops for Cursor
+# Soundcheck: Live Event Ops
 
 [![smithery badge](https://smithery.ai/badge/steven-pd2q/soundcheck)](https://smithery.ai/servers/steven-pd2q/soundcheck)
 
@@ -114,19 +112,21 @@ The skills are exported from the Soundcheck monorepo (`mcp-ts/skills/`), the sam
 
 ## Claude plugins (directory)
 
-This repository also packages plugins for Anthropic’s Claude Plugins directory:
+This repository packages plugins for Anthropic’s Claude Plugins directory:
 
 | Plugin path | Product | MCP | Auth |
 | --- | --- | --- | --- |
-| `soundcheck/` (`.claude-plugin/`, plugin name `soundcheck`, display name Soundcheck) | **Soundcheck** member staffing / ops | `https://mcp.soundchecklive.io/mcp` | OAuth |
+| repository root (`.claude-plugin/`, name `soundcheck-live`, display name Soundcheck: Live Event Ops) | **Soundcheck** member staffing / ops | `https://mcp.soundchecklive.io/mcp` | OAuth |
 | `instant-quotes/` (plugin name `soundcheck-instant-quotes`) | **Soundcheck public live event directory** | `https://mcp.soundchecklive.io/public/mcp` | None |
 
 The public plugin's `quote_event` estimates are **SYNTHETIC / illustrative**, not binding. Member Soundcheck is signed-in org ops — a different product.
 
-To try the member plugin in Claude Code before the directory listing is live, start it from a checkout of this repository:
+The Claude directory member listing is locked to the **repository root**, so the member plugin files (`.claude-plugin/`, `.mcp.json`, `skills/`, README, LICENSE, icon) live here alongside JSON marketplace/registry manifests (allowed types for non-verified orgs).
+
+To try the member plugin in Claude Code before the directory listing is live:
 
 ```bash
-claude --plugin-dir /path/to/this-repo/soundcheck
+claude --plugin-dir /path/to/this-repo
 ```
 
 Claude Code asks you to sign in to Soundcheck with OAuth the first time a tool runs.
