@@ -1,7 +1,7 @@
 {
   "name": "soundcheck-live",
   "displayName": "Soundcheck: Live Event Ops",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "icon": "./assets/logo.png",
   "description": "Soundcheck member MCP (OAuth sign-in, no API keys, 249 tools) for running live events: gigs, crew shifts and offers, call lists, run of show and setlists, venues, gig-file import and settlement. Anything that messages crew asks you first and names who will be told. A no-login public MCP (18 tools) is included as a fallback for reviewers and discovery.",
   "author": {
