@@ -1,9 +1,9 @@
 {
   "name": "soundcheck-live",
-  "displayName": "Soundcheck: Live Event Ops",
+  "displayName": "Soundcheck Live: Live Event Ops",
   "version": "0.4.1",
   "icon": "./assets/logo.png",
-  "description": "Soundcheck member MCP (OAuth sign-in, no API keys, 249 tools) for running live events: gigs, crew shifts and offers, call lists, run of show and setlists, venues, gig-file import and settlement. Anything that messages crew asks you first and names who will be told. A no-login public MCP (18 tools) is included as a fallback for reviewers and discovery.",
+  "description": "Soundcheck Live member MCP (OAuth sign-in, no API keys, 249 tools) for running live events: gigs, crew shifts and offers, call lists, run of show and setlists, venues, gig-file import and settlement. Anything that messages crew asks you first and names who will be told. A no-login public MCP (18 tools) is included as a fallback for reviewers and discovery. Soundcheck Live: https://soundchecklive.io · Docs: https://docs.soundchecklive.io/integrations/mcp-server",
   "author": {
     "name": "Soundcheck Live, Inc.",
     "email": "info@soundchecklive.io"
@@ -14,7 +14,12 @@
   "keywords": [
     "soundcheck",
     "soundcheck live",
-    "soundcheck mcp"
+    "soundcheck mcp",
+    "live event staffing",
+    "event staffing",
+    "crew scheduling",
+    "run of show",
+    "live events mcp"
   ],
   "privacyPolicyUrl": "https://soundchecklive.io/privacy"
 }

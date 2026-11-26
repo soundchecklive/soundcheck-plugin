@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.soundchecklive/soundcheck",
-  "title": "Soundcheck: Live Event Ops",
-  "description": "Staff live events: gigs, crew, setlists, call lists, ingest. Hosted MCP with OAuth.",
+  "title": "Soundcheck Live: Live Event Ops",
+  "description": "Soundcheck Live: staff live events. Gigs, crew, run of show, call lists, ingest. Hosted MCP, OAuth.",
   "version": "0.2.0",
   "websiteUrl": "https://soundchecklive.io",
   "repository": {

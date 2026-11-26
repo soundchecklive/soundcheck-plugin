@@ -1,8 +1,8 @@
 {
   "name": "soundcheck",
-  "displayName": "Soundcheck",
+  "displayName": "Soundcheck Live",
   "version": "0.4.1",
-  "description": "Soundcheck member MCP for Cursor and Grok Bot: sign in with OAuth (no API keys) to staff and run live events: gigs, crew, setlists, call lists, ingest, gated settle (249 tools). Includes a secondary no-login public MCP (18 tools) as a fallback for reviewers and discovery.",
+  "description": "Soundcheck Live member MCP for Cursor and Grok Bot: sign in with OAuth (no API keys) to staff and run live events: gigs, crew, setlists, call lists, ingest, gated settle (249 tools). Includes a secondary no-login public MCP (18 tools) as a fallback for reviewers and discovery. Soundcheck Live: https://soundchecklive.io",
   "author": {
     "name": "Soundcheck Live, Inc.",
     "email": "info@soundchecklive.io"
@@ -11,7 +11,12 @@
   "keywords": [
     "soundcheck",
     "soundcheck live",
-    "soundcheck mcp"
+    "soundcheck mcp",
+    "live event staffing",
+    "event staffing",
+    "crew scheduling",
+    "run of show",
+    "live events mcp"
   ],
   "logo": "assets/logo.png",
   "license": "MIT",
