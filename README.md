@@ -1,16 +1,20 @@
-![Soundcheck](assets/logo.png)
+![Soundcheck Live](assets/logo.png)
 
-# Soundcheck: Live Event Ops
+# Soundcheck Live: MCP server and agent plugin for live event staffing
 
 [![smithery badge](https://smithery.ai/badge/steven-pd2q/soundcheck)](https://smithery.ai/servers/steven-pd2q/soundcheck)
 
-Cursor plugin that connects Agent to **Soundcheck** — live-event staffing for gigs, crew, setlists, call lists, and document ingest. **Headline: the Soundcheck member MCP** (`https://mcp.soundchecklive.io/mcp`) — sign in with OAuth, no API keys, and run your org's gigs, crew, setlists, and settlement from your agent. A separate no-login public MCP, the **Soundcheck Event Directory** (vendors, talent, venues and standard event data), is packaged in `instant-quotes/`.
+**[Soundcheck Live](https://soundchecklive.io)** is staffing software for live events: book gigs, send shift offers to freelance crew, share the run of show on crew phones, and track and pay crew per gig. This repository is its official MCP server listing and agent plugin for Cursor and Claude Code, so an AI assistant can staff a live event, build a run of show, ingest an advance sheet or settle a gig in your Soundcheck Live organization. The app, connectors and server shorten the name to "Soundcheck"; both mean the same product.
+
+- Website: [soundchecklive.io](https://soundchecklive.io) · Plans: [soundchecklive.io/pricing](https://soundchecklive.io/pricing) (14-day free trial, no card) · Docs: [docs.soundchecklive.io](https://docs.soundchecklive.io) · Facts for AI assistants: [soundchecklive.io/ai-info](https://soundchecklive.io/ai-info)
+
+Cursor plugin that connects Agent to **Soundcheck Live** — live-event staffing for gigs, crew, setlists, call lists, and document ingest. **Headline: the Soundcheck member MCP** (`https://mcp.soundchecklive.io/mcp`) — sign in with OAuth, no API keys, and run your org's gigs, crew, setlists, and settlement from your agent. A separate no-login public MCP, the **Soundcheck Event Directory** (vendors, talent, venues and standard event data), is packaged in `instant-quotes/`.
 
 Smithery: https://smithery.ai/servers/steven-pd2q/soundcheck
 
 ## Install
 
-**Cursor Marketplace (when listed)** — install **Soundcheck** from the Cursor Marketplace, then connect the MCP server with OAuth when prompted.
+**Cursor Marketplace (when listed)** — install **Soundcheck Live** from the Cursor Marketplace, then connect the MCP server with OAuth when prompted.
 
 **Local test (before / without Marketplace listing)**
 
@@ -116,9 +120,9 @@ This repository packages plugins for Anthropic’s Claude Plugins directory:
 
 | Plugin path | Product | MCP | Auth |
 | --- | --- | --- | --- |
-| repository root (`.claude-plugin/`, name `soundcheck-live`, display name Soundcheck: Live Event Ops) | **Soundcheck** member staffing / ops | `https://mcp.soundchecklive.io/mcp` | OAuth |
-| `soundcheck/` (`.claude-plugin/`, name `soundcheck-live`, display name Soundcheck: Live Event Ops) | **Soundcheck** member staffing / ops (same content as the repository root plugin) | `https://mcp.soundchecklive.io/mcp` | OAuth |
-| `instant-quotes/` (plugin name `soundcheck-instant-quotes`) | **Soundcheck public live event directory** | `https://mcp.soundchecklive.io/public/mcp` | None |
+| repository root (`.claude-plugin/`, name `soundcheck-live`, display name Soundcheck Live: Live Event Ops) | **Soundcheck Live** member staffing / ops | `https://mcp.soundchecklive.io/mcp` | OAuth |
+| `soundcheck/` (`.claude-plugin/`, name `soundcheck-live`, display name Soundcheck Live: Live Event Ops) | **Soundcheck Live** member staffing / ops (same content as the repository root plugin) | `https://mcp.soundchecklive.io/mcp` | OAuth |
+| `instant-quotes/` (plugin name `soundcheck-instant-quotes`) | **Soundcheck Live public event directory** | `https://mcp.soundchecklive.io/public/mcp` | None |
 
 The public plugin's `quote_event` estimates are **SYNTHETIC / illustrative**, not binding. Member Soundcheck is signed-in org ops — a different product.
 
@@ -130,4 +134,4 @@ To try the member plugin in Claude Code before the directory listing is live:
 claude --plugin-dir /path/to/this-repo
 ```
 
-Claude Code asks you to sign in to Soundcheck with OAuth the first time a tool runs.
+Claude Code asks you to sign in to Soundcheck Live with OAuth the first time a tool runs.

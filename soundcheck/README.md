@@ -1,10 +1,14 @@
 <p align="center">
-  <img src="assets/logo.png" alt="Soundcheck" width="128" height="128" />
+  <img src="assets/logo.png" alt="Soundcheck Live" width="128" height="128" />
 </p>
 
-# Soundcheck
+# Soundcheck Live
 
-This plugin connects Claude to the **Soundcheck member MCP** so you can staff and run live events from a conversation: gigs, crew shifts and offers, call lists, run of show and setlists, venues, gig-file import, and settlement.
+**[Soundcheck Live](https://soundchecklive.io)** is staffing software for live events: book gigs, send shift offers to freelance crew, share the run of show on crew phones, and track and pay crew per gig. The app and its connectors shorten the name to "Soundcheck".
+
+**Links:** [Soundcheck Live](https://soundchecklive.io) · [Pricing](https://soundchecklive.io/pricing) (14-day free trial, no card) · [MCP docs](https://docs.soundchecklive.io/integrations/mcp-server) · [All AI assistants](https://soundchecklive.io/mcp) · [Facts for AI assistants](https://soundchecklive.io/ai-info) · [Privacy](https://soundchecklive.io/privacy) · Support: info@soundchecklive.io
+
+This plugin connects Claude to the **Soundcheck Live member MCP** so you can staff and run live events from a conversation: gigs, crew shifts and offers, call lists, run of show and setlists, venues, gig-file import, and settlement.
 
 Sign in with OAuth. There are no API keys. The hosted endpoint is `https://mcp.soundchecklive.io/mcp` (249 tools). Anything that messages crew asks you first and names who will be told. Consequential writes return `confirmation_required` and do nothing until you confirm.
 

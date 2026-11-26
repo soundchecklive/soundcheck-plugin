@@ -1,8 +1,8 @@
 {
   "name": "soundcheck-instant-quotes",
-  "displayName": "Soundcheck Instant Quotes",
+  "displayName": "Soundcheck Live Instant Quotes",
   "version": "0.4.0",
-  "description": "Soundcheck Instant Quotes and event business directory for Cursor and Grok Bot: anonymous public MCP (18 tools) for live-event cost estimates and vendor discovery. No login. Estimates are SYNTHETIC and illustrative, not a binding quote.",
+  "description": "Soundcheck Live Instant Quotes and event business directory for Cursor and Grok Bot: anonymous public MCP (18 tools) for live-event cost estimates and vendor discovery. No login. Estimates are SYNTHETIC and illustrative, not a binding quote.",
   "author": {
     "name": "Soundcheck Live, Inc.",
     "email": "info@soundchecklive.io"
@@ -14,7 +14,9 @@
     "soundcheck live",
     "soundcheck mcp",
     "instant quotes",
-    "soundcheck instant quotes"
+    "soundcheck instant quotes",
+    "live event directory",
+    "event pricing"
   ],
   "logo": "assets/logo.png",
   "license": "MIT"

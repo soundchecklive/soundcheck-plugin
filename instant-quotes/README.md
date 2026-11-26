@@ -1,10 +1,12 @@
-# Soundcheck Instant Quotes (Claude plugin)
+# Soundcheck Live Instant Quotes (Claude plugin)
 
-Anonymous **Instant Quotes** and event business discovery for live events: parties, weddings, conferences, concerts, festivals, galas, and offsites. No Soundcheck login.
+Anonymous **Instant Quotes** and event business discovery for live events: parties, weddings, conferences, concerts, festivals, galas, and offsites. No Soundcheck Live login. Instant Quotes is the free public directory from [Soundcheck Live](https://soundchecklive.io), staffing software for live events; to staff and run your own gigs from Claude, use the member plugin in the [repository root](https://github.com/soundchecklive/soundcheck-plugin).
+
+**Links:** [Soundcheck Live](https://soundchecklive.io) · [Pricing](https://soundchecklive.io/pricing) (14-day free trial, no card) · [MCP docs](https://docs.soundchecklive.io/integrations/mcp-server) · [All AI assistants](https://soundchecklive.io/mcp) · [Facts for AI assistants](https://soundchecklive.io/ai-info) · [Privacy](https://soundchecklive.io/privacy) · Support: info@soundchecklive.io
 
 ## What this is
 
-This plugin connects Claude to Soundcheck’s **public** MCP server:
+This plugin connects Claude to Soundcheck Live’s **public** MCP server:
 
 `https://mcp.soundchecklive.io/public/mcp`
 
